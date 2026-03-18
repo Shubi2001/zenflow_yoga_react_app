@@ -45,10 +45,16 @@ const Navbar = () => {
               </Link>
             ))}
             {isAuthenticated ? (
-              <div className="flex items-center gap-4 border-l border-stone-200 pl-8">
-                <Link to="/dashboard" className="flex items-center gap-2 text-sm font-medium text-stone-700 hover:text-emerald-600 transition-colors">
-                  <User className="w-4 h-4" />
-                  {user?.name}
+              <div className="flex items-center gap-6 border-l border-stone-200 pl-8">
+                <Link to="/dashboard" className="flex items-center gap-3 text-sm font-medium text-stone-700 hover:text-emerald-600 transition-colors">
+                  {user?.photoURL ? (
+                    <img src={user.photoURL} alt={user.name} className="w-8 h-8 rounded-full border border-stone-200" referrerPolicy="no-referrer" />
+                  ) : (
+                    <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center border border-stone-200">
+                      <User className="w-4 h-4 text-stone-500" />
+                    </div>
+                  )}
+                  <span className="hidden lg:inline">{user?.name}</span>
                 </Link>
                 <button
                   onClick={logout}

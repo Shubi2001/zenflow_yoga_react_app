@@ -22,9 +22,16 @@ const Dashboard = () => {
   return (
     <div className="pt-32 pb-24 min-h-screen bg-stone-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-stone-800 mb-2">Namaste, {user?.name}</h1>
-          <p className="text-stone-500">Welcome back to your practice. Here's your progress so far.</p>
+        <div className="mb-12 flex items-center gap-6">
+          {user?.photoURL && (
+            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-sm">
+              <img src={user.photoURL} alt={user.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            </div>
+          )}
+          <div>
+            <h1 className="text-4xl font-bold text-stone-800 mb-2">Namaste, {user?.name}</h1>
+            <p className="text-stone-500">Welcome back to your practice. Here's your progress so far.</p>
+          </div>
         </div>
 
         {/* Stats Grid */}
@@ -73,7 +80,7 @@ const Dashboard = () => {
                   {favoritePoses.map(pose => (
                     <Card key={pose.id} className="flex items-center gap-4 p-4">
                       <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
-                        <img src={pose.image} alt={pose.name} className="w-full h-full object-cover" />
+                        <img src={pose.image} alt={pose.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       </div>
                       <div>
                         <h4 className="font-bold text-stone-800">{pose.name}</h4>

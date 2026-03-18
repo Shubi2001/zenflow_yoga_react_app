@@ -7,15 +7,22 @@ import { useAuth } from '../context/AuthContext';
 const Login = () => {
   const [email, setEmail] = React.useState('');
   const [name, setName] = React.useState('');
-  const { login } = useAuth();
+  const { loginWithGoogle } = useAuth();
   const navigate = useNavigate();
+
+  const handleGoogleLogin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Google login failed:', error);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email && name) {
-      login(email, name);
-      navigate('/dashboard');
-    }
+    // For now, we'll just use Google login for simplicity as requested
+    handleGoogleLogin();
   };
 
   return (
@@ -79,6 +86,24 @@ const Login = () => {
             className="w-full bg-emerald-600 text-white py-4 rounded-2xl font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-200"
           >
             Sign In <ArrowRight className="w-5 h-5" />
+          </button>
+
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-stone-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-stone-500">Or continue with</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleGoogleLogin}
+            className="w-full bg-white border border-stone-200 text-stone-700 py-4 rounded-2xl font-bold hover:bg-stone-50 transition-all flex items-center justify-center gap-3"
+          >
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5" />
+            Sign in with Google
           </button>
         </form>
 

@@ -51,7 +51,7 @@ const PoseLibrary = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="relative">
                   <div className="aspect-[4/5] rounded-3xl overflow-hidden">
-                    <img src={selectedPose.image} alt={selectedPose.name} className="w-full h-full object-cover" />
+                    <img src={selectedPose.image} alt={selectedPose.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                   <button
                     onClick={() => toggleFavorite(selectedPose.id)}

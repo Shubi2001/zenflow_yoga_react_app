@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import { BLOG_POSTS } from '../constants';
 import Card from '../components/Card';
@@ -29,6 +30,7 @@ const Blog = () => {
                     src={post.image} 
                     alt={post.title} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                    referrerPolicy="no-referrer"
                   />
                   <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold text-emerald-600">
                     {post.category}
@@ -51,9 +53,12 @@ const Blog = () => {
                   <p className="text-stone-500 text-lg leading-relaxed mb-8">
                     {post.excerpt}
                   </p>
-                  <button className="flex items-center gap-2 text-emerald-600 font-bold hover:gap-3 transition-all">
+                  <Link 
+                    to={`/blog/${post.id}`}
+                    className="flex items-center gap-2 text-emerald-600 font-bold hover:gap-3 transition-all"
+                  >
                     Read More <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </Link>
                 </div>
               </Card>
             </motion.div>

@@ -25,7 +25,7 @@ const Trainers = () => {
             >
               <Card className="flex flex-col md:flex-row h-full">
                 <div className="md:w-2/5 h-80 md:h-auto overflow-hidden">
-                  <img src={trainer.image} alt={trainer.name} className="w-full h-full object-cover" />
+                  <img src={trainer.image} alt={trainer.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <div className="md:w-3/5 p-8 md:p-10 flex flex-col justify-between">
                   <div>

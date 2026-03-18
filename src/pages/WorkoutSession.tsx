@@ -82,7 +82,7 @@ const WorkoutSession = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/10"
         >
-          <img src={currentPose.image} alt={currentPose.name} className="w-full h-full object-cover" />
+          <img src={currentPose.image} alt={currentPose.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div className="absolute bottom-10 left-10 text-white">
             <h2 className="text-4xl font-bold mb-2">{currentPose.name}</h2>
@@ -124,7 +124,7 @@ const WorkoutSession = () => {
             <h4 className="text-white font-bold mb-4">Next Up</h4>
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-xl overflow-hidden">
-                <img src={POSES[(currentPoseIndex + 1) % POSES.length].image} alt="Next" className="w-full h-full object-cover" />
+                <img src={POSES[(currentPoseIndex + 1) % POSES.length].image} alt="Next" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               </div>
               <div className="text-left">
                 <p className="text-white font-medium">{POSES[(currentPoseIndex + 1) % POSES.length].name}</p>

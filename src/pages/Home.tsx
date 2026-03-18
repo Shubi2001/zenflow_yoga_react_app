@@ -15,6 +15,7 @@ const Home = () => {
             src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=2000"
             alt="Yoga Hero"
             className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-stone-900/60 to-transparent" />
         </div>
@@ -98,7 +99,7 @@ const Home = () => {
             {CLASSES.map((yogaClass) => (
               <Card key={yogaClass.id}>
                 <div className="relative h-64 overflow-hidden">
-                  <img src={yogaClass.image} alt={yogaClass.title} className="w-full h-full object-cover" />
+                  <img src={yogaClass.image} alt={yogaClass.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-emerald-600">
                     {yogaClass.difficulty}
                   </div>
@@ -152,7 +153,7 @@ const Home = () => {
             {TRAINERS.map(trainer => (
               <div key={trainer.id} className="group">
                 <div className="relative mb-6 overflow-hidden rounded-3xl aspect-square">
-                  <img src={trainer.image} alt={trainer.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <img src={trainer.image} alt={trainer.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer" />
                 </div>
                 <h3 className="text-2xl font-bold text-stone-800 mb-2">{trainer.name}</h3>
                 <p className="text-emerald-600 font-medium mb-4">{trainer.role}</p>

@@ -49,7 +49,7 @@ const Classes = () => {
             >
               <Card>
                 <div className="relative h-56">
-                  <img src={yogaClass.image} alt={yogaClass.title} className="w-full h-full object-cover" />
+                  <img src={yogaClass.image} alt={yogaClass.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   <div className="absolute top-4 right-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold">
                     {yogaClass.category}
                   </div>

@@ -14,6 +14,7 @@ import PoseLibrary from './pages/PoseLibrary';
 import WorkoutSession from './pages/WorkoutSession';
 import Trainers from './pages/Trainers';
 import Blog from './pages/Blog';
+import BlogPostDetail from './pages/BlogPostDetail';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
@@ -35,6 +36,7 @@ function AppContent() {
           <Route path="/poses" element={<PoseLibrary />} />
           <Route path="/trainers" element={<Trainers />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPostDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
