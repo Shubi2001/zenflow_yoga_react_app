@@ -6,9 +6,10 @@ import { useAuth } from '../context/AuthContext';
 
 const Signup = () => {
   const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const [name, setName] = React.useState('');
   const [error, setError] = React.useState<string | null>(null);
-  const { loginWithGoogle } = useAuth();
+  const { loginWithGoogle, signupWithEmail } = useAuth();
   const navigate = useNavigate();
 
   const handleGoogleSignup = async () => {
@@ -19,16 +20,31 @@ const Signup = () => {
     } catch (error: any) {
       console.error('Google signup failed:', error);
       if (error.code === 'auth/unauthorized-domain') {
-        setError('This domain is not authorized in Firebase. Please add it to the "Authorized Domains" in your Firebase Console.');
+        setError(`This domain (${window.location.hostname}) is not authorized in Firebase. Please add it to the "Authorized Domains" in your Firebase Console.`);
       } else {
         setError(error.message || 'Signup failed. Please try again.');
       }
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    handleGoogleSignup();
+    setError(null);
+    try {
+      await signupWithEmail(email, password, name);
+      navigate('/dashboard');
+    } catch (error: any) {
+      console.error('Email signup failed:', error);
+      if (error.code === 'auth/unauthorized-domain') {
+        setError(`This domain (${window.location.hostname}) is not authorized in Firebase. Please add it to the "Authorized Domains" in your Firebase Console.`);
+      } else if (error.code === 'auth/email-already-in-use') {
+        setError('This email is already in use.');
+      } else if (error.code === 'auth/weak-password') {
+        setError('Password should be at least 6 characters.');
+      } else {
+        setError(error.message || 'Signup failed. Please try again.');
+      }
+    }
   };
 
   return (
@@ -86,6 +102,8 @@ const Signup = () => {
               <input
                 type="password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-5 py-4 pl-12 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
               />

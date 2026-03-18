@@ -6,9 +6,9 @@ import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = React.useState('');
-  const [name, setName] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const [error, setError] = React.useState<string | null>(null);
-  const { loginWithGoogle } = useAuth();
+  const { loginWithGoogle, loginWithEmail } = useAuth();
   const navigate = useNavigate();
 
   const handleGoogleLogin = async () => {
@@ -19,17 +19,29 @@ const Login = () => {
     } catch (error: any) {
       console.error('Google login failed:', error);
       if (error.code === 'auth/unauthorized-domain') {
-        setError('This domain is not authorized in Firebase. Please add it to the "Authorized Domains" in your Firebase Console.');
+        setError(`This domain (${window.location.hostname}) is not authorized in Firebase. Please add it to the "Authorized Domains" in your Firebase Console.`);
       } else {
         setError(error.message || 'Login failed. Please try again.');
       }
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // For now, we'll just use Google login for simplicity as requested
-    handleGoogleLogin();
+    setError(null);
+    try {
+      await loginWithEmail(email, password);
+      navigate('/dashboard');
+    } catch (error: any) {
+      console.error('Email login failed:', error);
+      if (error.code === 'auth/unauthorized-domain') {
+        setError(`This domain (${window.location.hostname}) is not authorized in Firebase. Please add it to the "Authorized Domains" in your Firebase Console.`);
+      } else if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+        setError('Invalid email or password.');
+      } else {
+        setError(error.message || 'Login failed. Please try again.');
+      }
+    }
   };
 
   return (
@@ -52,21 +64,6 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-bold text-stone-700 mb-2 ml-1">Full Name</label>
-            <div className="relative">
-              <input
-                type="text"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="John Doe"
-                className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-5 py-4 pl-12 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
-              />
-              <Mail className="w-5 h-5 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2" />
-            </div>
-          </div>
-
-          <div>
             <label className="block text-sm font-bold text-stone-700 mb-2 ml-1">Email Address</label>
             <div className="relative">
               <input
@@ -87,6 +84,8 @@ const Login = () => {
               <input
                 type="password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-5 py-4 pl-12 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
               />
