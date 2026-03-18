@@ -36,7 +36,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             photoURL: firebaseUser.photoURL || undefined,
             favorites: [],
             completedSessions: 0,
-            totalMinutes: 0
+            totalMinutes: 0,
+            bio: '',
+            gender: '',
+            hobby: ''
           };
           await setDoc(userDocRef, newUser);
           setUser(newUser);
@@ -61,9 +64,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const loginWithGoogle = async () => {
     try {
+      // Clear any existing auth state that might be stuck
       await signInWithPopup(auth, googleProvider);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Login failed:', error);
+      
+      if (error.code === 'auth/unauthorized-domain') {
+        alert(`This domain (${window.location.hostname}) is not authorized in your Firebase Console. \n\nPlease add it to Authentication > Settings > Authorized domains.`);
+      } else if (error.code === 'auth/popup-blocked') {
+        alert('The login popup was blocked by your browser. Please allow popups for this site.');
+      } else if (error.code === 'auth/popup-closed-by-user') {
+        // User closed the popup, no need for a big alert
+        console.log('User closed the login popup');
+      } else {
+        alert(`Login failed: ${error.message}`);
+      }
       throw error;
     }
   };

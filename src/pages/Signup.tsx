@@ -7,15 +7,28 @@ import { useAuth } from '../context/AuthContext';
 const Signup = () => {
   const [email, setEmail] = React.useState('');
   const [name, setName] = React.useState('');
-  const { login } = useAuth();
+  const [error, setError] = React.useState<string | null>(null);
+  const { loginWithGoogle } = useAuth();
   const navigate = useNavigate();
+
+  const handleGoogleSignup = async () => {
+    setError(null);
+    try {
+      await loginWithGoogle();
+      navigate('/dashboard');
+    } catch (error: any) {
+      console.error('Google signup failed:', error);
+      if (error.code === 'auth/unauthorized-domain') {
+        setError('This domain is not authorized in Firebase. Please add it to the "Authorized Domains" in your Firebase Console.');
+      } else {
+        setError(error.message || 'Signup failed. Please try again.');
+      }
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email && name) {
-      login(email, name);
-      navigate('/dashboard');
-    }
+    handleGoogleSignup();
   };
 
   return (
@@ -29,6 +42,12 @@ const Signup = () => {
           <h1 className="text-3xl font-bold text-stone-800 mb-3">Create Account</h1>
           <p className="text-stone-500">Start your journey to a healthier you.</p>
         </div>
+
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-100 text-red-600 rounded-2xl text-sm font-medium">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -79,6 +98,24 @@ const Signup = () => {
             className="w-full bg-emerald-600 text-white py-4 rounded-2xl font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-200"
           >
             Create Account <ArrowRight className="w-5 h-5" />
+          </button>
+
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-stone-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-stone-500">Or continue with</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleGoogleSignup}
+            className="w-full bg-white border border-stone-200 text-stone-700 py-4 rounded-2xl font-bold hover:bg-stone-50 transition-all flex items-center justify-center gap-3"
+          >
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5" />
+            Sign up with Google
           </button>
         </form>
 

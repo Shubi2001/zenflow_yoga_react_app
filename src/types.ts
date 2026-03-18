@@ -49,4 +49,10 @@ export interface User {
   favorites: string[]; // Pose IDs
   completedSessions: number;
   totalMinutes: number;
+  isPremium?: boolean;
+  membershipType?: 'Monthly' | 'Yearly' | 'Lifetime';
+  membershipExpiry?: string;
+  bio?: string;
+  gender?: string;
+  hobby?: string;
 }

@@ -60,7 +60,7 @@ export const CLASSES: YogaClass[] = [
     instructor: 'Sarah Jenkins',
     duration: '30 min',
     difficulty: 'Beginner',
-    image: 'https://images.unsplash.com/photo-1510894347713-fc3ad6cb0322?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
     category: 'Vinyasa',
     description: 'A gentle flow to wake up your body and mind.'
   },
@@ -80,7 +80,7 @@ export const CLASSES: YogaClass[] = [
     instructor: 'Elena Rodriguez',
     duration: '45 min',
     difficulty: 'Intermediate',
-    image: 'https://images.unsplash.com/photo-1552196564-97c84b111721?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=800',
     category: 'Hatha',
     description: 'Focus on alignment and breath in this balanced session.'
   }
@@ -101,7 +101,7 @@ export const TRAINERS: Trainer[] = [
     name: 'David Chen',
     role: 'Power Yoga Specialist',
     bio: 'David brings athletic intensity to traditional yoga practices.',
-    image: 'https://images.unsplash.com/photo-1567013127542-490d757e51fe?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
     certifications: ['RYT 200', 'Personal Training L3'],
     experience: '8 years'
   }
@@ -127,5 +127,25 @@ export const BLOG_POSTS: BlogPost[] = [
     date: 'March 10, 2024',
     image: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&q=80&w=800',
     category: 'Mindfulness'
+  },
+  {
+    id: '3',
+    title: 'Yoga for Better Sleep',
+    excerpt: 'Calm your nervous system before bed with these restorative poses.',
+    content: 'Quality sleep is essential for recovery and mental clarity...',
+    author: 'Sarah Jenkins',
+    date: 'March 18, 2024',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
+    category: 'Wellness'
+  },
+  {
+    id: '4',
+    title: 'The Power of Consistency',
+    excerpt: 'Why showing up on your mat every day matters more than you think.',
+    content: 'Consistency is the key to unlocking the true benefits of yoga...',
+    author: 'David Chen',
+    date: 'March 20, 2024',
+    image: 'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800',
+    category: 'Motivation'
   }
 ];

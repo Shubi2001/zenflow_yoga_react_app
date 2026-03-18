@@ -16,6 +16,7 @@ const Navbar = () => {
     { name: 'Pose Library', path: '/poses' },
     { name: 'Trainers', path: '/trainers' },
     { name: 'Blog', path: '/blog' },
+    { name: 'Membership', path: '/membership' },
     { name: 'Contact', path: '/contact' },
   ];
 

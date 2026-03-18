@@ -7,15 +7,22 @@ import { useAuth } from '../context/AuthContext';
 const Login = () => {
   const [email, setEmail] = React.useState('');
   const [name, setName] = React.useState('');
+  const [error, setError] = React.useState<string | null>(null);
   const { loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const handleGoogleLogin = async () => {
+    setError(null);
     try {
       await loginWithGoogle();
       navigate('/dashboard');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Google login failed:', error);
+      if (error.code === 'auth/unauthorized-domain') {
+        setError('This domain is not authorized in Firebase. Please add it to the "Authorized Domains" in your Firebase Console.');
+      } else {
+        setError(error.message || 'Login failed. Please try again.');
+      }
     }
   };
 
@@ -36,6 +43,12 @@ const Login = () => {
           <h1 className="text-3xl font-bold text-stone-800 mb-3">Welcome Back</h1>
           <p className="text-stone-500">Continue your journey to wellness.</p>
         </div>
+
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-100 text-red-600 rounded-2xl text-sm font-medium">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
