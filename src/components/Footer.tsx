@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flower2, Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+import { Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+import Logo from './Logo';
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-6">
-              <Flower2 className="w-6 h-6 text-emerald-600" />
+              <Logo className="w-6 h-6 text-emerald-600" />
               <span className="text-xl font-bold text-stone-800 tracking-tight">ZenFlow</span>
             </Link>
             <p className="text-stone-500 text-sm leading-relaxed mb-6">

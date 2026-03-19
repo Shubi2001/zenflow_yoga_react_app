@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Flower2, User, Menu, X } from 'lucide-react';
+import { User, Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { cn } from '../utils/cn';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -26,7 +27,7 @@ const Navbar = () => {
         <div className="flex justify-between h-20 items-center">
           <Link to="/" className="flex items-center gap-2 group">
             <div className="p-2 bg-emerald-100 rounded-xl group-hover:bg-emerald-200 transition-colors">
-              <Flower2 className="w-6 h-6 text-emerald-600" />
+              <Logo className="w-6 h-6 text-emerald-600" />
             </div>
             <span className="text-xl font-bold text-stone-800 tracking-tight">ZenFlow</span>
           </Link>

@@ -9,10 +9,10 @@ import firebaseConfig from '../firebase-applet-config.json';
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore with settings to improve reliability in restricted environments
+const databaseId = firebaseConfig.firestoreDatabaseId === '(default)' ? undefined : firebaseConfig.firestoreDatabaseId;
 export const db = initializeFirestore(app, {
-  databaseId: firebaseConfig.firestoreDatabaseId === '(default)' ? undefined : firebaseConfig.firestoreDatabaseId,
   experimentalForceLongPolling: true, // Helps with connection issues in some proxy environments
-});
+}, databaseId);
 
 export const auth = getAuth(app);
 

@@ -45,7 +45,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  photoURL?: string;
+  photoURL?: string | null;
   favorites: string[]; // Pose IDs
   completedSessions: number;
   totalMinutes: number;

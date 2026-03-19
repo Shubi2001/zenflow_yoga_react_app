@@ -79,5 +79,9 @@ service cloud.firestore {
       allow read: if true; // Poses are public
       allow write: if isAdmin();
     }
+
+    match /test/connection {
+      allow read: if true; // Connection test
+    }
   }
 }

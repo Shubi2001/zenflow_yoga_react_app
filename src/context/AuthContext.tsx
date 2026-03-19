@@ -22,20 +22,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        // Check if user exists in Firestore
-        const userDocRef = doc(db, 'users', firebaseUser.uid);
-        const userDoc = await getDoc(userDocRef);
-
-        if (userDoc.exists()) {
-          setUser(userDoc.data() as User);
-        } else {
-          // Create new user in Firestore
-          const newUser: User = {
+      try {
+        if (firebaseUser) {
+          // Set basic user info immediately for faster UI response
+          const basicUser: User = {
             id: firebaseUser.uid,
             name: firebaseUser.displayName || 'Zen User',
             email: firebaseUser.email || '',
-            photoURL: firebaseUser.photoURL || undefined,
+            photoURL: firebaseUser.photoURL || null,
             favorites: [],
             completedSessions: 0,
             totalMinutes: 0,
@@ -43,22 +37,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             gender: '',
             hobby: ''
           };
-          await setDoc(userDocRef, newUser);
-          setUser(newUser);
-        }
+          setUser(basicUser);
+          setLoading(false); // Stop loading early if we have basic info
 
-        // Real-time listener for user data
-        const unsubDoc = onSnapshot(userDocRef, (doc) => {
-          if (doc.exists()) {
-            setUser(doc.data() as User);
+          const userDocRef = doc(db, 'users', firebaseUser.uid);
+          
+          try {
+            const userDoc = await getDoc(userDocRef);
+
+            if (userDoc.exists()) {
+              setUser(userDoc.data() as User);
+            } else {
+              // Create new user in Firestore
+              await setDoc(userDocRef, basicUser);
+            }
+
+            // Real-time listener for user data updates
+            onSnapshot(userDocRef, (doc) => {
+              if (doc.exists()) {
+                setUser(doc.data() as User);
+              }
+            }, (err) => {
+              console.error("User doc snapshot error:", err);
+            });
+          } catch (fsError) {
+            console.error("Firestore user fetch failed:", fsError);
           }
-        });
-
-        return () => unsubDoc();
-      } else {
-        setUser(null);
+        } else {
+          setUser(null);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Auth state change error:", error);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -125,7 +137,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       isAuthenticated: !!user,
       loading 
     }}>
-      {!loading && children}
+      {loading ? (
+        <div className="min-h-screen flex items-center justify-center bg-stone-50">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
+            <p className="text-stone-500 font-medium animate-pulse">Connecting to ZenFlow...</p>
+          </div>
+        </div>
+      ) : children}
     </AuthContext.Provider>
   );
 };

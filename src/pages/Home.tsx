@@ -9,74 +9,109 @@ const Home = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center overflow-hidden">
+      <section className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
+          <motion.img
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 10, ease: "linear" }}
             src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=2000"
             alt="Yoga Hero"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-900/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-900/70 via-stone-900/40 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-2xl"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-medium backdrop-blur-md mb-6">
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-medium backdrop-blur-md mb-8 border border-white/10"
+            >
               <Sparkles className="w-4 h-4" />
               Find Your Inner Peace
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Elevate Your Mind, <br />
-              <span className="text-emerald-400">Strengthen Your Body</span>
+            </motion.span>
+            <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 leading-[0.9] tracking-tight font-serif italic">
+              Elevate Your <br />
+              <span className="text-emerald-400 not-italic font-sans">Mind & Body</span>
             </h1>
-            <p className="text-xl text-stone-200 mb-10 leading-relaxed">
+            <p className="text-xl text-stone-200 mb-12 leading-relaxed font-light max-w-lg">
               Join our community of mindful practitioners. Whether you're a beginner or an advanced yogi, we have the perfect path for you.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6">
               <Link
                 to="/classes"
-                className="bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 shadow-xl shadow-emerald-900/20"
+                className="bg-emerald-600 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-emerald-900/40"
               >
-                Join Now <ArrowRight className="w-5 h-5" />
+                Start Your Journey <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/poses"
-                className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full text-lg font-medium hover:bg-white/20 transition-all text-center"
+                className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 transition-all text-center"
               >
-                Explore Poses
+                Explore Library
               </Link>
             </div>
           </motion.div>
         </div>
+        
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent" />
+        </motion.div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 bg-stone-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold text-stone-800 mb-6">Why Choose ZenFlow?</h2>
-            <p className="text-stone-500 text-lg">We provide a holistic approach to yoga, combining physical strength with mental clarity.</p>
+      <section className="py-32 relative overflow-hidden">
+        <div className="atmosphere absolute top-0 left-0 w-full h-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-24">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl font-bold text-stone-800 mb-8 font-serif italic"
+            >
+              Why Choose ZenFlow?
+            </motion.h2>
+            <p className="text-stone-500 text-xl font-light">We provide a holistic approach to yoga, combining physical strength with mental clarity.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { icon: Heart, title: 'Holistic Health', desc: 'Improve your physical, mental, and emotional well-being.' },
-              { icon: Shield, title: 'Expert Guidance', desc: 'Learn from certified instructors with years of experience.' },
-              { icon: Users, title: 'Community Support', desc: 'Join a supportive network of like-minded individuals.' }
+              { icon: Heart, title: 'Holistic Health', desc: 'Improve your physical, mental, and emotional well-being through mindful practice.' },
+              { icon: Shield, title: 'Expert Guidance', desc: 'Learn from certified instructors with years of experience in various yoga styles.' },
+              { icon: Users, title: 'Community Support', desc: 'Join a supportive network of like-minded individuals on the same path.' }
             ].map((benefit, i) => (
-              <Card key={i} className="p-8 text-center">
-                <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <benefit.icon className="w-8 h-8 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-bold text-stone-800 mb-4">{benefit.title}</h3>
-                <p className="text-stone-500 leading-relaxed">{benefit.desc}</p>
-              </Card>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Card className="p-10 text-center premium-card h-full flex flex-col items-center">
+                  <div className="w-20 h-20 bg-emerald-50 rounded-[2rem] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                    <benefit.icon className="w-10 h-10 text-emerald-600" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-stone-800 mb-6">{benefit.title}</h3>
+                  <p className="text-stone-500 leading-relaxed font-light">{benefit.desc}</p>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>

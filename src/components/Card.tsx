@@ -11,9 +11,10 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ children, className, hover = true }) => {
   return (
     <motion.div
-      whileHover={hover ? { y: -8 } : {}}
+      whileHover={hover ? { y: -12, scale: 1.02 } : {}}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={cn(
-        "bg-white rounded-3xl border border-stone-100 shadow-sm overflow-hidden",
+        "premium-card overflow-hidden",
         className
       )}
     >
