@@ -1,3 +1,5 @@
+export type ThemeType = 'calm-blue' | 'earthy-tones' | 'vibrant-sunset' | 'night-flow';
+
 export interface Pose {
   id: string;
   name: string;
@@ -6,6 +8,7 @@ export interface Pose {
   benefits: string[];
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   image: string;
+  animation?: string;
   category: string;
 }
 

@@ -28,6 +28,30 @@
         "benefits": { "type": "array", "items": { "type": "string" } },
         "image": { "type": "string" }
       }
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "User class reservation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "classId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["confirmed", "cancelled"] }
+      },
+      "required": ["id", "userId", "classId", "timestamp", "status"]
+    },
+    "ClassStats": {
+      "title": "ClassStats",
+      "description": "Real-time statistics for a class",
+      "type": "object",
+      "properties": {
+        "classId": { "type": "string" },
+        "capacity": { "type": "integer" },
+        "bookedCount": { "type": "integer" }
+      },
+      "required": ["classId", "capacity", "bookedCount"]
     }
   },
   "firestore": {
@@ -38,6 +62,14 @@
     "/poses/{poseId}": {
       "schema": "Pose",
       "description": "Yoga poses collection"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Class bookings"
+    },
+    "/class_stats/{classId}": {
+      "schema": "ClassStats",
+      "description": "Class capacity and booking counts"
     }
   }
 }

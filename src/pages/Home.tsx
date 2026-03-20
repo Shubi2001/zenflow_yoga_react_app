@@ -34,14 +34,14 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-medium backdrop-blur-md mb-8 border border-white/10"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/20 text-primary-300 text-sm font-medium backdrop-blur-md mb-8 border border-white/10"
             >
               <Sparkles className="w-4 h-4" />
               Find Your Inner Peace
             </motion.span>
             <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 leading-[0.9] tracking-tight font-serif italic">
               Elevate Your <br />
-              <span className="text-emerald-400 not-italic font-sans">Mind & Body</span>
+              <span className="text-primary-400 not-italic font-sans">Mind & Body</span>
             </h1>
             <p className="text-xl text-stone-200 mb-12 leading-relaxed font-light max-w-lg">
               Join our community of mindful practitioners. Whether you're a beginner or an advanced yogi, we have the perfect path for you.
@@ -49,7 +49,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-6">
               <Link
                 to="/classes"
-                className="bg-emerald-600 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-emerald-900/40"
+                className="bg-primary-600 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-primary-700 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-primary-900/40"
               >
                 Start Your Journey <ArrowRight className="w-5 h-5" />
               </Link>
@@ -105,8 +105,8 @@ const Home = () => {
                 transition={{ delay: i * 0.1 }}
               >
                 <Card className="p-10 text-center premium-card h-full flex flex-col items-center">
-                  <div className="w-20 h-20 bg-emerald-50 rounded-[2rem] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                    <benefit.icon className="w-10 h-10 text-emerald-600" />
+                  <div className="w-20 h-20 bg-primary-50 rounded-[2rem] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                    <benefit.icon className="w-10 h-10 text-primary-600" />
                   </div>
                   <h3 className="text-2xl font-bold text-stone-800 mb-6">{benefit.title}</h3>
                   <p className="text-stone-500 leading-relaxed font-light">{benefit.desc}</p>
@@ -125,7 +125,7 @@ const Home = () => {
               <h2 className="text-4xl font-bold text-stone-800 mb-4">Featured Classes</h2>
               <p className="text-stone-500">Discover our most popular yoga sessions.</p>
             </div>
-            <Link to="/classes" className="text-emerald-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">
+            <Link to="/classes" className="text-primary-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">
               View All <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -135,7 +135,7 @@ const Home = () => {
               <Card key={yogaClass.id}>
                 <div className="relative h-64 overflow-hidden">
                   <img src={yogaClass.image} alt={yogaClass.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-emerald-600">
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary-600">
                     {yogaClass.difficulty}
                   </div>
                 </div>
@@ -144,7 +144,7 @@ const Home = () => {
                   <p className="text-stone-500 text-sm mb-4">{yogaClass.description}</p>
                   <div className="flex justify-between items-center pt-4 border-t border-stone-100">
                     <span className="text-sm text-stone-400">{yogaClass.duration} • {yogaClass.instructor}</span>
-                    <Link to={`/workout/${yogaClass.id}`} className="text-emerald-600 font-bold text-sm">Start Now</Link>
+                    <Link to={`/workout/${yogaClass.id}`} className="text-primary-600 font-bold text-sm">Start Now</Link>
                   </div>
                 </div>
               </Card>
@@ -154,8 +154,8 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-emerald-900 text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-800 rounded-full blur-3xl -mr-48 -mt-48 opacity-50" />
+      <section className="py-24 bg-primary-900 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-800 rounded-full blur-3xl -mr-48 -mt-48 opacity-50" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">What Our Members Say</h2>
@@ -168,10 +168,10 @@ const Home = () => {
               <div key={i} className="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10">
                 <p className="text-xl italic mb-8 leading-relaxed">"{t.text}"</p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-emerald-500 rounded-full" />
+                  <div className="w-12 h-12 bg-primary-500 rounded-full" />
                   <div>
                     <h4 className="font-bold">{t.name}</h4>
-                    <span className="text-emerald-400 text-sm">Member for 1 year</span>
+                    <span className="text-primary-400 text-sm">Member for 1 year</span>
                   </div>
                 </div>
               </div>
@@ -191,7 +191,7 @@ const Home = () => {
                   <img src={trainer.image} alt={trainer.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer" />
                 </div>
                 <h3 className="text-2xl font-bold text-stone-800 mb-2">{trainer.name}</h3>
-                <p className="text-emerald-600 font-medium mb-4">{trainer.role}</p>
+                <p className="text-primary-600 font-medium mb-4">{trainer.role}</p>
                 <p className="text-stone-500">{trainer.bio}</p>
               </div>
             ))}

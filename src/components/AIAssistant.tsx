@@ -50,14 +50,14 @@ const AIAssistant = () => {
             className="absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[500px] bg-white rounded-[2.5rem] shadow-2xl border border-stone-100 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-6 bg-emerald-600 text-white flex items-center justify-between">
+            <div className="p-6 bg-primary-600 text-white flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-white/20 rounded-xl">
                   <Bot className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold">ZenFlow AI</h3>
-                  <p className="text-xs text-emerald-100">Your Yoga Assistant</p>
+                  <p className="text-xs text-primary-100">Your Yoga Assistant</p>
                 </div>
               </div>
               <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors">
@@ -76,7 +76,7 @@ const AIAssistant = () => {
                 >
                   <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${
                     msg.role === 'user' 
-                      ? 'bg-emerald-600 text-white rounded-tr-none' 
+                      ? 'bg-primary-600 text-white rounded-tr-none' 
                       : 'bg-white text-stone-700 shadow-sm border border-stone-100 rounded-tl-none'
                   }`}>
                     <div className="prose prose-sm prose-stone max-w-none">
@@ -88,7 +88,7 @@ const AIAssistant = () => {
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-stone-100 flex items-center gap-2">
-                    <Loader2 className="w-4 h-4 text-emerald-600 animate-spin" />
+                    <Loader2 className="w-4 h-4 text-primary-600 animate-spin" />
                     <span className="text-xs text-stone-400">ZenFlow AI is thinking...</span>
                   </div>
                 </div>
@@ -97,7 +97,7 @@ const AIAssistant = () => {
 
             {/* Input */}
             <div className="p-4 bg-white border-t border-stone-100">
-              <div className="flex items-center gap-2 bg-stone-50 rounded-2xl p-2 pl-4 border border-stone-200 focus-within:border-emerald-500 transition-colors">
+              <div className="flex items-center gap-2 bg-stone-50 rounded-2xl p-2 pl-4 border border-stone-200 focus-within:border-primary-500 transition-colors">
                 <input
                   type="text"
                   value={input}
@@ -109,7 +109,7 @@ const AIAssistant = () => {
                 <button 
                   onClick={handleSend}
                   disabled={isLoading || !input.trim()}
-                  className="p-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="p-3 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -123,7 +123,7 @@ const AIAssistant = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-emerald-700 transition-all relative group"
+        className="w-16 h-16 bg-primary-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-primary-700 transition-all relative group"
       >
         {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
         {!isOpen && (

@@ -32,7 +32,7 @@ const Blog = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold text-emerald-600">
+                  <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold text-primary-600">
                     {post.category}
                   </div>
                 </div>
@@ -47,7 +47,7 @@ const Blog = () => {
                       {post.author}
                     </div>
                   </div>
-                  <h2 className="text-3xl font-bold text-stone-800 mb-4 group-hover:text-emerald-600 transition-colors">
+                  <h2 className="text-3xl font-bold text-stone-800 mb-4 group-hover:text-primary-600 transition-colors">
                     {post.title}
                   </h2>
                   <p className="text-stone-500 text-lg leading-relaxed mb-8">
@@ -55,7 +55,7 @@ const Blog = () => {
                   </p>
                   <Link 
                     to={`/blog/${post.id}`}
-                    className="flex items-center gap-2 text-emerald-600 font-bold hover:gap-3 transition-all"
+                    className="flex items-center gap-2 text-primary-600 font-bold hover:gap-3 transition-all"
                   >
                     Read More <ArrowRight className="w-5 h-5" />
                   </Link>

@@ -1,13 +1,20 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Heart, Info, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Heart, Info, ChevronRight, Play, Image as ImageIcon } from 'lucide-react';
 import { POSES } from '../constants';
 import { useYoga } from '../context/YogaContext';
 import Card from '../components/Card';
+import LazyImage from '../components/LazyImage';
 
 const PoseLibrary = () => {
   const { favorites, toggleFavorite } = useYoga();
   const [selectedPose, setSelectedPose] = React.useState(POSES[0]);
+  const [showAnimation, setShowAnimation] = useState(false);
+
+  // Reset animation toggle when pose changes
+  React.useEffect(() => {
+    setShowAnimation(false);
+  }, [selectedPose.id]);
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-stone-50">
@@ -24,13 +31,13 @@ const PoseLibrary = () => {
                   onClick={() => setSelectedPose(pose)}
                   className={`w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${
                     selectedPose.id === pose.id 
-                    ? 'bg-emerald-600 text-white shadow-lg' 
-                    : 'bg-white text-stone-700 hover:bg-emerald-50'
+                    ? 'bg-primary-600 text-white shadow-lg' 
+                    : 'bg-white text-stone-700 hover:bg-primary-50'
                   }`}
                 >
                   <div>
                     <h3 className="font-bold">{pose.name}</h3>
-                    <p className={`text-xs ${selectedPose.id === pose.id ? 'text-emerald-100' : 'text-stone-400'}`}>
+                    <p className={`text-xs ${selectedPose.id === pose.id ? 'text-primary-100' : 'text-stone-400'}`}>
                       {pose.sanskritName}
                     </p>
                   </div>
@@ -50,12 +57,64 @@ const PoseLibrary = () => {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="relative">
-                  <div className="aspect-[4/5] rounded-3xl overflow-hidden">
-                    <img src={selectedPose.image} alt={selectedPose.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <div className="aspect-[4/5] rounded-3xl overflow-hidden relative group/img">
+                    <AnimatePresence mode="wait">
+                      {showAnimation && selectedPose.animation ? (
+                        <motion.img
+                          key="animation"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          src={selectedPose.animation}
+                          alt={`${selectedPose.name} animation`}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            console.error("Animation failed to load:", selectedPose.animation);
+                            // Fallback to static image if animation fails
+                            setShowAnimation(false);
+                          }}
+                        />
+                      ) : (
+                        <motion.div
+                          key="image"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="w-full h-full"
+                        >
+                          <LazyImage 
+                            src={selectedPose.image} 
+                            alt={selectedPose.name} 
+                            containerClassName="w-full h-full"
+                            className="w-full h-full object-cover" 
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {selectedPose.animation && (
+                      <button
+                        onClick={() => setShowAnimation(!showAnimation)}
+                        className="absolute bottom-4 left-4 p-3 bg-white/90 backdrop-blur-md text-primary-600 rounded-xl shadow-lg hover:bg-white transition-all flex items-center gap-2 text-sm font-bold z-20"
+                      >
+                        {showAnimation ? (
+                          <>
+                            <ImageIcon className="w-4 h-4" />
+                            Show Photo
+                          </>
+                        ) : (
+                          <>
+                            <Play className="w-4 h-4" />
+                            Watch Animation
+                          </>
+                        )}
+                      </button>
+                    )}
                   </div>
+                  
                   <button
                     onClick={() => toggleFavorite(selectedPose.id)}
-                    className={`absolute top-4 right-4 p-4 rounded-2xl backdrop-blur-md transition-all ${
+                    className={`absolute top-4 right-4 p-4 rounded-2xl backdrop-blur-md transition-all z-20 ${
                       favorites.includes(selectedPose.id)
                       ? 'bg-red-500 text-white'
                       : 'bg-white/80 text-stone-400 hover:text-red-500'
@@ -67,7 +126,7 @@ const PoseLibrary = () => {
 
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-bold uppercase">
+                    <span className="px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-xs font-bold uppercase">
                       {selectedPose.difficulty}
                     </span>
                     <span className="px-3 py-1 bg-stone-100 text-stone-600 rounded-full text-xs font-bold uppercase">
@@ -80,7 +139,7 @@ const PoseLibrary = () => {
                   <div className="space-y-8">
                     <div>
                       <h4 className="flex items-center gap-2 font-bold text-stone-800 mb-3">
-                        <Info className="w-5 h-5 text-emerald-600" />
+                        <Info className="w-5 h-5 text-primary-600" />
                         Description
                       </h4>
                       <p className="text-stone-500 leading-relaxed">{selectedPose.description}</p>
@@ -91,7 +150,7 @@ const PoseLibrary = () => {
                       <ul className="grid grid-cols-1 gap-3">
                         {selectedPose.benefits.map((benefit, i) => (
                           <li key={i} className="flex items-center gap-3 text-stone-500">
-                            <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                            <div className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
                             {benefit}
                           </li>
                         ))}

@@ -45,12 +45,18 @@ function AppContent() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-stone-900 bg-white selection:bg-emerald-100 selection:text-emerald-900">
-      <Navbar />
-      <main className="flex-grow">
-        <Suspense fallback={
+    <div className="min-h-screen flex flex-col font-sans text-stone-900 bg-white selection:bg-primary-100 selection:text-primary-900 relative overflow-hidden">
+      {/* Immersive Background */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="atmosphere absolute inset-0" />
+      </div>
+      
+      <div className="relative z-10 flex flex-col flex-grow">
+        <Navbar />
+        <main className="flex-grow">
+          <Suspense fallback={
           <div className="min-h-screen flex items-center justify-center bg-stone-50">
-            <div className="w-12 h-12 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
+            <div className="w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
           </div>
         }>
           <AnimatePresence mode="wait">
@@ -87,6 +93,7 @@ function AppContent() {
       </main>
       <Footer />
       <AIAssistant />
+      </div>
     </div>
   );
 }

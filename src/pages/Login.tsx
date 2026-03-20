@@ -72,7 +72,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="john@example.com"
-                className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-5 py-4 pl-12 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-5 py-4 pl-12 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
               />
               <Mail className="w-5 h-5 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2" />
             </div>
@@ -87,7 +87,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-5 py-4 pl-12 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-5 py-4 pl-12 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
               />
               <Lock className="w-5 h-5 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2" />
             </div>
@@ -95,7 +95,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-emerald-600 text-white py-4 rounded-2xl font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-200"
+            className="w-full bg-primary-600 text-white py-4 rounded-2xl font-bold hover:bg-primary-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-200"
           >
             Sign In <ArrowRight className="w-5 h-5" />
           </button>
@@ -121,7 +121,7 @@ const Login = () => {
 
         <p className="text-center mt-8 text-stone-500 text-sm">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-emerald-600 font-bold hover:underline">
+          <Link to="/signup" className="text-primary-600 font-bold hover:underline">
             Sign up
           </Link>
         </p>

@@ -33,8 +33,8 @@ const Membership = () => {
       name: 'Monthly',
       price: '$19',
       features: ['Unlimited Classes', 'Personalized Plans', 'Trainer Support', 'Ad-free Experience'],
-      icon: <Zap className="w-6 h-6 text-emerald-500" />,
-      color: 'bg-emerald-50'
+      icon: <Zap className="w-6 h-6 text-primary-500" />,
+      color: 'bg-primary-50'
     },
     {
       name: 'Yearly',
@@ -81,10 +81,10 @@ const Membership = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className={`relative bg-white rounded-[2.5rem] p-8 shadow-sm border border-stone-100 flex flex-col ${plan.popular ? 'ring-2 ring-emerald-500' : ''}`}
+              className={`relative bg-white rounded-[2.5rem] p-8 shadow-sm border border-stone-100 flex flex-col ${plan.popular ? 'ring-2 ring-primary-500' : ''}`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-500 text-white px-4 py-1 rounded-full text-sm font-bold">
                   Most Popular
                 </div>
               )}
@@ -102,7 +102,7 @@ const Membership = () => {
               <ul className="space-y-4 mb-8 flex-grow">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-3 text-stone-600">
-                    <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-primary-500 flex-shrink-0" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -112,7 +112,7 @@ const Membership = () => {
                 onClick={() => handleSubscribe(plan.name)}
                 className={`w-full py-4 rounded-2xl font-bold transition-all ${
                   plan.popular 
-                    ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg shadow-emerald-200' 
+                    ? 'bg-primary-600 text-white hover:bg-primary-700 shadow-lg shadow-primary-200' 
                     : 'bg-stone-100 text-stone-800 hover:bg-stone-200'
                 }`}
               >
@@ -126,10 +126,10 @@ const Membership = () => {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-16 p-8 bg-emerald-50 rounded-[2.5rem] border border-emerald-100 text-center"
+            className="mt-16 p-8 bg-primary-50 rounded-[2.5rem] border border-primary-100 text-center"
           >
-            <h2 className="text-2xl font-bold text-emerald-900 mb-2">You are a Premium Member!</h2>
-            <p className="text-emerald-700">
+            <h2 className="text-2xl font-bold text-primary-900 mb-2">You are a Premium Member!</h2>
+            <p className="text-primary-700">
               Your {user.membershipType} membership is active. Enjoy your exclusive benefits.
             </p>
           </motion.div>

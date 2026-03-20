@@ -29,7 +29,7 @@ const Trainers = () => {
                 </div>
                 <div className="md:w-3/5 p-8 md:p-10 flex flex-col justify-between">
                   <div>
-                    <span className="text-emerald-600 font-bold text-sm uppercase tracking-widest mb-2 block">
+                    <span className="text-primary-600 font-bold text-sm uppercase tracking-widest mb-2 block">
                       {trainer.role}
                     </span>
                     <h2 className="text-3xl font-bold text-stone-800 mb-4">{trainer.name}</h2>
@@ -37,27 +37,27 @@ const Trainers = () => {
                     
                     <div className="space-y-4 mb-8">
                       <div className="flex items-center gap-3 text-stone-700">
-                        <Award className="w-5 h-5 text-emerald-600" />
+                        <Award className="w-5 h-5 text-primary-600" />
                         <span className="text-sm font-medium">{trainer.certifications.join(', ')}</span>
                       </div>
                       <div className="flex items-center gap-3 text-stone-700">
-                        <Briefcase className="w-5 h-5 text-emerald-600" />
+                        <Briefcase className="w-5 h-5 text-primary-600" />
                         <span className="text-sm font-medium">{trainer.experience} Experience</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4 pt-6 border-t border-stone-100">
-                    <button className="p-2.5 bg-stone-50 rounded-xl text-stone-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
+                    <button className="p-2.5 bg-stone-50 rounded-xl text-stone-400 hover:text-primary-600 hover:bg-primary-50 transition-all">
                       <Instagram className="w-5 h-5" />
                     </button>
-                    <button className="p-2.5 bg-stone-50 rounded-xl text-stone-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
+                    <button className="p-2.5 bg-stone-50 rounded-xl text-stone-400 hover:text-primary-600 hover:bg-primary-50 transition-all">
                       <Twitter className="w-5 h-5" />
                     </button>
-                    <button className="p-2.5 bg-stone-50 rounded-xl text-stone-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
+                    <button className="p-2.5 bg-stone-50 rounded-xl text-stone-400 hover:text-primary-600 hover:bg-primary-50 transition-all">
                       <Mail className="w-5 h-5" />
                     </button>
-                    <button className="ml-auto bg-emerald-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-700 transition-all">
+                    <button className="ml-auto bg-primary-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-primary-700 transition-all">
                       Book Session
                     </button>
                   </div>

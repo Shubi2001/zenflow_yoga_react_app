@@ -20,8 +20,8 @@ const Contact = () => {
             <Card className="p-8">
               <div className="space-y-10">
                 <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-emerald-600" />
+                  <div className="w-12 h-12 bg-primary-50 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
                     <h4 className="font-bold text-stone-800 mb-1">Email Us</h4>
@@ -31,8 +31,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-emerald-600" />
+                  <div className="w-12 h-12 bg-primary-50 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
                     <h4 className="font-bold text-stone-800 mb-1">Call Us</h4>
@@ -42,8 +42,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-emerald-600" />
+                  <div className="w-12 h-12 bg-primary-50 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
                     <h4 className="font-bold text-stone-800 mb-1">Visit Studio</h4>
@@ -56,13 +56,13 @@ const Contact = () => {
               <div className="mt-12 pt-12 border-t border-stone-100">
                 <h4 className="font-bold text-stone-800 mb-6">Follow Us</h4>
                 <div className="flex gap-4">
-                  <a href="#" className="p-3 bg-stone-50 rounded-xl text-stone-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
+                  <a href="#" className="p-3 bg-stone-50 rounded-xl text-stone-400 hover:text-primary-600 hover:bg-primary-50 transition-all">
                     <Instagram className="w-5 h-5" />
                   </a>
-                  <a href="#" className="p-3 bg-stone-50 rounded-xl text-stone-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
+                  <a href="#" className="p-3 bg-stone-50 rounded-xl text-stone-400 hover:text-primary-600 hover:bg-primary-50 transition-all">
                     <Twitter className="w-5 h-5" />
                   </a>
-                  <a href="#" className="p-3 bg-stone-50 rounded-xl text-stone-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
+                  <a href="#" className="p-3 bg-stone-50 rounded-xl text-stone-400 hover:text-primary-600 hover:bg-primary-50 transition-all">
                     <Facebook className="w-5 h-5" />
                   </a>
                 </div>
@@ -79,7 +79,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Jane"
-                    className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                   />
                 </div>
                 <div>
@@ -87,7 +87,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Doe"
-                    className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -95,12 +95,12 @@ const Contact = () => {
                   <input
                     type="email"
                     placeholder="jane@example.com"
-                    className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                   />
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-sm font-bold text-stone-700 mb-3 ml-1">Subject</label>
-                  <select className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all appearance-none">
+                  <select className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all appearance-none">
                     <option>General Inquiry</option>
                     <option>Class Booking</option>
                     <option>Membership Questions</option>
@@ -112,13 +112,13 @@ const Contact = () => {
                   <textarea
                     rows={6}
                     placeholder="How can we help you?"
-                    className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all resize-none"
+                    className="w-full bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none"
                   ></textarea>
                 </div>
                 <div className="md:col-span-2">
                   <button
                     type="submit"
-                    className="bg-emerald-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-200"
+                    className="bg-primary-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-primary-700 transition-all flex items-center justify-center gap-3 shadow-lg shadow-primary-200"
                   >
                     Send Message <Send className="w-5 h-5" />
                   </button>
