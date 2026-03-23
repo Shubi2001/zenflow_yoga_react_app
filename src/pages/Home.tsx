@@ -5,6 +5,8 @@ import { ArrowRight, Sparkles, Heart, Shield, Users } from 'lucide-react';
 import { CLASSES, TRAINERS } from '../constants';
 import Card from '../components/Card';
 
+import LazyImage from '../components/LazyImage';
+
 const Home = () => {
   return (
     <div className="pt-20">
@@ -39,7 +41,7 @@ const Home = () => {
               <Sparkles className="w-4 h-4" />
               Find Your Inner Peace
             </motion.span>
-            <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 leading-[0.9] tracking-tight font-serif italic">
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white mb-8 leading-[0.9] tracking-tight font-serif italic">
               Elevate Your <br />
               <span className="text-primary-400 not-italic font-sans">Mind & Body</span>
             </h1>
@@ -134,7 +136,12 @@ const Home = () => {
             {CLASSES.map((yogaClass) => (
               <Card key={yogaClass.id}>
                 <div className="relative h-64 overflow-hidden">
-                  <img src={yogaClass.image} alt={yogaClass.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <LazyImage 
+                    src={yogaClass.image} 
+                    alt={yogaClass.title} 
+                    containerClassName="w-full h-full"
+                    className="w-full h-full object-cover" 
+                  />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary-600">
                     {yogaClass.difficulty}
                   </div>
@@ -188,7 +195,12 @@ const Home = () => {
             {TRAINERS.map(trainer => (
               <div key={trainer.id} className="group">
                 <div className="relative mb-6 overflow-hidden rounded-3xl aspect-square">
-                  <img src={trainer.image} alt={trainer.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer" />
+                  <LazyImage 
+                    src={trainer.image} 
+                    alt={trainer.name} 
+                    containerClassName="w-full h-full"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-stone-800 mb-2">{trainer.name}</h3>
                 <p className="text-primary-600 font-medium mb-4">{trainer.role}</p>

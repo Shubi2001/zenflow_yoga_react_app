@@ -44,7 +44,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -119,7 +119,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-stone-600 hover:text-primary-600 transition-colors"
@@ -135,7 +135,7 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-white border-b border-stone-200 px-4 py-6 space-y-4"
+          className="lg:hidden bg-white border-b border-stone-200 px-4 py-6 space-y-4"
         >
           {navLinks.map((link) => (
             <Link

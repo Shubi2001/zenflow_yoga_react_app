@@ -19,12 +19,24 @@ const Dashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [bookingLoading, setBookingLoading] = useState<string | null>(null);
   const [editData, setEditData] = useState({
-    name: user?.name || '',
-    bio: user?.bio || '',
-    gender: user?.gender || '',
-    hobby: user?.hobby || '',
-    photoURL: user?.photoURL || ''
+    name: '',
+    bio: '',
+    gender: '',
+    hobby: '',
+    photoURL: ''
   });
+
+  React.useEffect(() => {
+    if (user) {
+      setEditData({
+        name: user.name || '',
+        bio: user.bio || '',
+        gender: user.gender || '',
+        hobby: user.hobby || '',
+        photoURL: user.photoURL || ''
+      });
+    }
+  }, [user]);
 
   const favoritePoses = POSES.filter(p => favorites.includes(p.id));
   const bookedClasses = CLASSES.filter(c => bookings.some(b => b.classId === c.id));
@@ -70,11 +82,11 @@ const Dashboard = () => {
           <div className="flex items-center gap-6">
             <div className="relative group">
               <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                <img 
+                <LazyImage 
                   src={user?.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200'} 
                   alt={user?.name} 
+                  containerClassName="w-full h-full"
                   className="w-full h-full object-cover" 
-                  referrerPolicy="no-referrer" 
                 />
               </div>
               <button 

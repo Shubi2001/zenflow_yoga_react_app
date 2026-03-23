@@ -5,6 +5,8 @@ import { POSES } from '../constants';
 import { useYoga } from '../context/YogaContext';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
+import LazyImage from '../components/LazyImage';
+
 const SOUNDSCAPES = [
   { id: 'none', name: 'None', icon: VolumeX },
   { id: 'rain', name: 'Rain', icon: Volume2, url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' }, // Placeholder
@@ -159,9 +161,14 @@ const WorkoutSession = () => {
           key={currentPose.id}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className={`relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/10 transition-all duration-700 ${isZenMode ? 'aspect-video lg:col-span-2 max-h-[70vh] mx-auto' : 'aspect-square'}`}
+          className={`relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/10 transition-all duration-700 ${isZenMode ? 'aspect-video lg:col-span-2 max-h-[70vh] mx-auto' : 'aspect-video md:aspect-square'}`}
         >
-          <img src={currentPose.image} alt={currentPose.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          <LazyImage 
+            src={currentPose.image} 
+            alt={currentPose.name} 
+            containerClassName="w-full h-full"
+            className="w-full h-full object-cover" 
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div className="absolute bottom-10 left-10 text-white">
             <h2 className="text-4xl font-bold mb-2">{currentPose.name}</h2>
@@ -247,7 +254,12 @@ const WorkoutSession = () => {
               <h4 className="text-white font-bold mb-4">Next Up</h4>
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-xl overflow-hidden">
-                  <img src={sessionPoses[(currentPoseIndex + 1) % totalPoses].image} alt="Next" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <LazyImage 
+                    src={sessionPoses[(currentPoseIndex + 1) % totalPoses].image} 
+                    alt="Next" 
+                    containerClassName="w-full h-full"
+                    className="w-full h-full object-cover" 
+                  />
                 </div>
                 <div className="text-left">
                   <p className="text-white font-medium">{sessionPoses[(currentPoseIndex + 1) % totalPoses].name}</p>

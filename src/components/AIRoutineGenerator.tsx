@@ -14,6 +14,8 @@ const MOODS = [
   { id: 'focused', label: 'Focused', icon: Sparkles, color: 'text-primary-500', bg: 'bg-primary-50' },
 ];
 
+import LazyImage from './LazyImage';
+
 const AIRoutineGenerator = () => {
   const [mood, setMood] = useState('');
   const [duration, setDuration] = useState(15);
@@ -147,7 +149,12 @@ const AIRoutineGenerator = () => {
               {routine.poses.map((pose: any, i: number) => (
                 <div key={i} className="flex items-center gap-4 p-3 rounded-2xl bg-stone-50 border border-stone-100">
                   <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
-                    <img src={pose.image} alt={pose.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <LazyImage 
+                      src={pose.image} 
+                      alt={pose.name} 
+                      containerClassName="w-full h-full"
+                      className="w-full h-full object-cover" 
+                    />
                   </div>
                   <div className="flex-grow">
                     <p className="text-sm font-bold text-stone-800">{pose.name}</p>
@@ -173,9 +180,10 @@ const AIRoutineGenerator = () => {
             </div>
           </motion.div>
         )}
-      </div>
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-full blur-[80px] -mr-32 -mt-32 opacity-50" />
-    </Card>
+      </AnimatePresence>
+    </div>
+    <div className="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-full blur-[80px] -mr-32 -mt-32 opacity-50" />
+  </Card>
   );
 };
 

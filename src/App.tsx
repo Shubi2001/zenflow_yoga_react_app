@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AIAssistant from './components/AIAssistant';
+const AIAssistant = lazy(() => import('./components/AIAssistant'));
 
 // Lazy load pages for performance
 const Home = lazy(() => import('./pages/Home'));

@@ -47,7 +47,7 @@ const AIAssistant = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[500px] bg-white rounded-[2.5rem] shadow-2xl border border-stone-100 flex flex-col overflow-hidden"
+            className="absolute bottom-20 right-0 w-[calc(100vw-48px)] max-w-[400px] h-[500px] bg-white rounded-[2.5rem] shadow-2xl border border-stone-100 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="p-6 bg-primary-600 text-white flex items-center justify-between">

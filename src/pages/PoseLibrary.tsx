@@ -24,24 +24,24 @@ const PoseLibrary = () => {
           {/* Pose List */}
           <div className="lg:col-span-4 space-y-4">
             <h1 className="text-3xl font-bold text-stone-800 mb-8">Pose Library</h1>
-            <div className="space-y-3 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:max-h-[70vh] pb-4 lg:pb-0 lg:pr-2 custom-scrollbar no-scrollbar lg:no-scrollbar-none">
               {POSES.map((pose) => (
                 <button
                   key={pose.id}
                   onClick={() => setSelectedPose(pose)}
-                  className={`w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${
+                  className={`flex-shrink-0 lg:flex-shrink w-[200px] lg:w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${
                     selectedPose.id === pose.id 
                     ? 'bg-primary-600 text-white shadow-lg' 
                     : 'bg-white text-stone-700 hover:bg-primary-50'
                   }`}
                 >
                   <div>
-                    <h3 className="font-bold">{pose.name}</h3>
-                    <p className={`text-xs ${selectedPose.id === pose.id ? 'text-primary-100' : 'text-stone-400'}`}>
+                    <h3 className="font-bold truncate">{pose.name}</h3>
+                    <p className={`text-xs truncate ${selectedPose.id === pose.id ? 'text-primary-100' : 'text-stone-400'}`}>
                       {pose.sanskritName}
                     </p>
                   </div>
-                  <ChevronRight className={`w-5 h-5 transition-transform ${selectedPose.id === pose.id ? 'translate-x-1' : 'group-hover:translate-x-1'}`} />
+                  <ChevronRight className={`hidden lg:block w-5 h-5 transition-transform ${selectedPose.id === pose.id ? 'translate-x-1' : 'group-hover:translate-x-1'}`} />
                 </button>
               ))}
             </div>
